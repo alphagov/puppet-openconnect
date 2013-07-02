@@ -14,6 +14,11 @@ describe 'openconnect' do
         it { should contain_class('openconnect::install') }
         it { should contain_class('openconnect::config') }
         it { should contain_class('openconnect::service') }
+
+        # FIXME
+        it 'should not allow required params to be bypassed' do
+          expect { should }.to raise_error(Puppet::Error, /Must pass/)
+        end
       end
     end
   end
