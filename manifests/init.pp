@@ -1,20 +1,41 @@
 # == Class: openconnect
 #
-# Full description of class openconnect here.
+# Cisco OpenConnect VPN client.
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
+# [*gateway*]
+#   See openconnect::config.
+#
+# [*user*]
+#   See openconnect::config.
+#
+# [*password*]
+#   See openconnect::config.
+#
+# [*dnsupdate*]
+#   See openconnect::config.
+#
+# [*cacerts*]
+#   See openconnect::config.
 #
 class openconnect (
+  $url = undef,
+  $user = undef,
+  $password = undef,
+  $dnsupdate = undef,
+  $cacerts = undef
 ) inherits openconnect::params {
-
-  # validate parameters here
 
   anchor { 'openconnect::begin': } ->
   class { 'openconnect::install': } ->
-  class { 'openconnect::config': }
+  class { 'openconnect::config':
+    url       => $url,
+    user      => $user,
+    password  => $password,
+    dnsupdate => $dnsupdate,
+    cacerts   => $cacerts,
+  }
   class { 'openconnect::service': } ->
   anchor { 'openconnect::end': }
 

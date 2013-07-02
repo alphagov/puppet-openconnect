@@ -11,5 +11,6 @@ class openconnect::service {
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
+    provider   => 'upstart',
   }
 }

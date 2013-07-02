@@ -6,11 +6,7 @@
 class openconnect::params {
   case $::osfamily {
     'Debian': {
-      $package_name = 'openconnect'
-      $service_name = 'openconnect'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'openconnect'
+      $package_name = ['vpnc', 'openconnect']
       $service_name = 'openconnect'
     }
     default: {
