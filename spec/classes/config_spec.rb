@@ -5,9 +5,9 @@ describe 'openconnect' do
   let(:upstart_file) { '/etc/init/openconnect.conf' }
   let(:passwd_file) { '/etc/openconnect/network.passwd' }
   let(:default_params) {{
-    :url      => 'https://vpn.example.com/profile',
-    :user     => 'janesmith',
-    :password => 'mekmitasdigoat',
+    :url  => 'https://vpn.example.com/profile',
+    :user => 'janesmith',
+    :pass => 'mekmitasdigoat',
   }}
   let(:facts) {{
     :osfamily => 'Debian',
@@ -30,7 +30,7 @@ describe 'openconnect' do
       )
     end
 
-    it 'should set password' do
+    it 'should set pass' do
       should contain_file(passwd_file).with_content('mekmitasdigoat')
     end
 
@@ -78,7 +78,7 @@ EOS
   end
 
   context 'validate params' do
-    %w{url user password cacerts}.each do |param|
+    %w{url user pass cacerts}.each do |param|
       describe param do
         let(:params) { default_params.merge({
           param.to_sym => ['an', 'array'],

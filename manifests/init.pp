@@ -10,7 +10,7 @@
 # [*user*]
 #   Xauth username.
 #
-# [*password*]
+# [*pass*]
 #   Xauth password.
 #
 # [*dnsupdate*]
@@ -24,7 +24,7 @@
 class openconnect(
   $url,
   $user,
-  $password,
+  $pass,
   $dnsupdate = false,
   $cacerts = ''
 ) inherits openconnect::params {

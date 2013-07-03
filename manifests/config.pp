@@ -5,11 +5,11 @@
 class openconnect::config {
   $url       = $::openconnect::url
   $user      = $::openconnect::user
-  $password  = $::openconnect::password
+  $pass      = $::openconnect::pass
   $dnsupdate = $::openconnect::dnsupdate
   $cacerts   = $::openconnect::cacerts
 
-  validate_string($url, $user, $password, $cacerts)
+  validate_string($url, $user, $pass, $cacerts)
   validate_bool($dnsupdate)
 
   file { '/etc/openconnect':
@@ -20,7 +20,7 @@ class openconnect::config {
   file { '/etc/openconnect/network.passwd':
     ensure  => present,
     mode    => '0600',
-    content => $password,
+    content => $pass,
   }
 
   $cacerts_ensure = $cacerts ? {

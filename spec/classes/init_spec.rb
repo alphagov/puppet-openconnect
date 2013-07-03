@@ -10,9 +10,9 @@ describe 'openconnect' do
 
         describe 'with mandatory params' do
           let(:params) {{
-            :url      => 'https://vpn.example.com/profile',
-            :user     => 'janesmith',
-            :password => 'mekmitasdigoat',
+            :url  => 'https://vpn.example.com/profile',
+            :user => 'janesmith',
+            :pass => 'mekmitasdigoat',
           }}
 
           it { should include_class('openconnect::params') }
