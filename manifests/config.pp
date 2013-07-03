@@ -2,32 +2,13 @@
 #
 # This class is called from openconnect
 #
-# === Parameters
-#
-# [*url*]
-#   URL for your VPN endpoint, including any profile name.
-#
-# [*user*]
-#   Xauth username.
-#
-# [*password*]
-#   Xauth password.
-#
-# [*dnsupdate*]
-#   Boolean, whether to accept nameservers from the VPN endpoint.
-#   Default: false
-#
-# [*cacerts*]
-#   PEM string of CAs to trust.
-#   Default: ''
-#
-class openconnect::config(
-  $url,
-  $user,
-  $password,
-  $dnsupdate = false,
-  $cacerts = ''
-) {
+class openconnect::config {
+  $url       = $::openconnect::url
+  $user      = $::openconnect::user
+  $password  = $::openconnect::password
+  $dnsupdate = $::openconnect::dnsupdate
+  $cacerts   = $::openconnect::cacerts
+
   validate_string($url, $user, $password, $cacerts)
   validate_bool($dnsupdate)
 

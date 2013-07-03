@@ -4,38 +4,34 @@
 #
 # === Parameters
 #
-# [*gateway*]
-#   See openconnect::config.
+# [*url*]
+#   URL for your VPN endpoint, including any profile name.
 #
 # [*user*]
-#   See openconnect::config.
+#   Xauth username.
 #
 # [*password*]
-#   See openconnect::config.
+#   Xauth password.
 #
 # [*dnsupdate*]
-#   See openconnect::config.
+#   Boolean, whether to accept nameservers from the VPN endpoint.
+#   Default: false
 #
 # [*cacerts*]
-#   See openconnect::config.
+#   PEM string of CAs to trust.
+#   Default: ''
 #
-class openconnect (
-  $url = undef,
-  $user = undef,
-  $password = undef,
-  $dnsupdate = undef,
-  $cacerts = undef
+class openconnect(
+  $url,
+  $user,
+  $password,
+  $dnsupdate = false,
+  $cacerts = ''
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->
   class { 'openconnect::install': } ->
-  class { 'openconnect::config':
-    url       => $url,
-    user      => $user,
-    password  => $password,
-    dnsupdate => $dnsupdate,
-    cacerts   => $cacerts,
-  }
+  class { 'openconnect::config': }
   class { 'openconnect::service': } ->
   anchor { 'openconnect::end': }
 

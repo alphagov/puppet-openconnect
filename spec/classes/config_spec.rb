@@ -1,12 +1,16 @@
 require 'spec_helper'
 
-describe 'openconnect::config' do
+# Tests ::openconnect::config proxy of ::openconnect
+describe 'openconnect' do
   let(:upstart_file) { '/etc/init/openconnect.conf' }
   let(:passwd_file) { '/etc/openconnect/network.passwd' }
   let(:default_params) {{
     :url      => 'https://vpn.example.com/profile',
     :user     => 'janesmith',
     :password => 'mekmitasdigoat',
+  }}
+  let(:facts) {{
+    :osfamily => 'Debian',
   }}
 
   describe 'mandatory params' do
