@@ -1,3 +1,6 @@
+2013-07-03 Release 0.0.4
+- Fix typo in Modulefile dependency list.
+
 2013-07-03 Release 0.0.3
 - Relax stdlib dependency to 3.x
 

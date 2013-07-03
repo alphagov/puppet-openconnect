@@ -1,5 +1,5 @@
 name          'gdsoperations-openconnect'
-version       '0.0.3'
+version       '0.0.4'
 source        'https://github.com/gds-operations/puppet-openconnect/'
 author        'Government Digital Service'
 license       'MIT'
