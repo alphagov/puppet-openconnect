@@ -6,4 +6,4 @@ license       'MIT'
 summary       'Cisco OpenConnect VPN client'
 project_page  'https://github.com/gds-operations/puppet-openconnect/'
 
-dependency 'puppetlabs/stdlib', '4.x'
+dependency 'puppetlabs/stdlib', '>= 3.0'
