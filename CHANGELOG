@@ -1,3 +1,6 @@
+2013-07-03 Release 0.0.3
+- Relax stdlib dependency to 3.x
+
 2013-07-03 Release 0.0.2
 - Change logic and default for dnsupdate.
 
