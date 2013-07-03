@@ -15,7 +15,7 @@
 #
 # [*dnsupdate*]
 #   Boolean, whether to accept nameservers from the VPN endpoint.
-#   Default: false
+#   Default: true
 #
 # [*cacerts*]
 #   PEM string of CAs to trust.
@@ -25,7 +25,7 @@ class openconnect(
   $url,
   $user,
   $pass,
-  $dnsupdate = false,
+  $dnsupdate = true,
   $cacerts = ''
 ) inherits openconnect::params {
 

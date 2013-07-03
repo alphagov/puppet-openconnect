@@ -32,10 +32,6 @@ class openconnect::config {
     content => $cacerts,
   }
 
-  $dnsupdate_real = $dnsupdate ? {
-    true    => 'yes',
-    default => 'no',
-  }
   file { '/etc/init/openconnect.conf':
     ensure  => present,
     mode    => '0600',

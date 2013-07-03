@@ -45,12 +45,12 @@ describe 'openconnect' do
 
   context 'dnsupdate true' do
     let(:params) { default_params.merge({
-      :dnsupdate => true,
+      :dnsupdate => false,
     })}
 
     it 'should set and export an env var' do
       should contain_file(upstart_file).with_content(
-        /^env DNS_UPDATE=yes\nexport DNS_UPDATE\n/
+        /^env DNS_UPDATE=no\nexport DNS_UPDATE\n/
       )
     end
   end
