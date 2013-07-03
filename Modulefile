@@ -1,8 +1,8 @@
-name          'puppet-openconnect'
+name          'gdsoperations-openconnect'
 version       '0.0.2'
 source        'https://github.com/gds-operations/puppet-openconnect/'
 author        'Government Digital Service'
-license       'MIT',
+license       'MIT'
 summary       'Cisco OpenConnect VPN client'
 project_page  'https://github.com/gds-operations/puppet-openconnect/'
 
