@@ -18,5 +18,8 @@ exec cat /etc/openconnect/network.passwd | openconnect \
 <% unless @cacerts.empty? -%>
   --CAfile /etc/openconnect/network.cacerts \
 <% end -%>
+<% unless @servercert.empty? -%>
+  --servercert <% @servercert -%> \
+<% end -%>
   --user <%= @user -%> \
   --passwd-on-stdin
