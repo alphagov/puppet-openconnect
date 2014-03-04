@@ -77,8 +77,20 @@ EOS
     end
   end
 
+  context 'servercert string' do
+    let(:params) { default_params.merge({
+      :servercert => "BLAH0123456789ABCDEF0123456789ABCDEFBLAH",
+    })}
+
+    it 'should set servercert' do
+      should contain_file(upstart_file).with_content(
+        /^\s*--servercert BLAH0123456789ABCDEF0123456789ABCDEFBLAH \\$/
+      )
+    end
+  end
+
   context 'validate params' do
-    %w{url user pass cacerts}.each do |param|
+    %w{url user pass cacerts servercert}.each do |param|
       describe param do
         let(:params) { default_params.merge({
           param.to_sym => ['an', 'array'],
