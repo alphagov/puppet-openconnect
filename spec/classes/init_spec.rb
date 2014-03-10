@@ -15,7 +15,7 @@ describe 'openconnect' do
             :pass => 'mekmitasdigoat',
           }}
 
-          it { should include_class('openconnect::params') }
+          it { should contain_class('openconnect::params') }
 
           it { should contain_class('openconnect::install') }
           it { should contain_class('openconnect::config') }
