@@ -21,12 +21,17 @@
 #   PEM string of CAs to trust.
 #   Default: ''
 #
+# [*servercert*]
+#   SHA1 fingerprint of trusted server's SSL certificate.
+#   Default: ''
+#
 class openconnect(
   $url,
   $user,
   $pass,
   $dnsupdate = true,
-  $cacerts = ''
+  $cacerts = '',
+  $servercert = ''
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->

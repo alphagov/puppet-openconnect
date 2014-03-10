@@ -3,13 +3,14 @@
 # This class is called from openconnect
 #
 class openconnect::config {
-  $url       = $::openconnect::url
-  $user      = $::openconnect::user
-  $pass      = $::openconnect::pass
-  $dnsupdate = $::openconnect::dnsupdate
-  $cacerts   = $::openconnect::cacerts
+  $url        = $::openconnect::url
+  $user       = $::openconnect::user
+  $pass       = $::openconnect::pass
+  $dnsupdate  = $::openconnect::dnsupdate
+  $cacerts    = $::openconnect::cacerts
+  $servercert = $::openconnect::servercert
 
-  validate_string($url, $user, $pass, $cacerts)
+  validate_string($url, $user, $pass, $cacerts, $servercert)
   validate_bool($dnsupdate)
 
   file { '/etc/openconnect':
