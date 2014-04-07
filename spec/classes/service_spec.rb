@@ -6,7 +6,18 @@ describe 'openconnect::service' do
       :osfamily => 'Debian',
     }}
 
-    it { should contain_service('openconnect') }
+    it 'should manage service' do
+      should contain_service('openconnect').with({
+        :ensure => 'running',
+        :enable => 'true',
+      })
+    end
+
+    it 'should stop+start to pick up changes' do
+      should contain_service('openconnect').with({
+        :hasrestart => false,
+      })
+    end
   end
 end
 
