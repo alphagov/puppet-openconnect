@@ -24,6 +24,10 @@ describe 'openconnect' do
       )
     end
 
+    it 'should enable syslog' do
+      should contain_file(upstart_file).with_content(/\s+--syslog\s+/)
+    end
+
     it 'should set user' do
       should contain_file(upstart_file).with_content(
         /^\s*--user janesmith \\$/

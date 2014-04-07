@@ -13,6 +13,7 @@ export DNS_UPDATE
 
 exec cat /etc/openconnect/network.passwd | openconnect \
   <%= @url -%> \
+  --syslog \
   --no-dtls \
   --script /etc/vpnc/vpnc-script \
 <% unless @cacerts.empty? -%>
