@@ -1,3 +1,8 @@
+2014-04-08 Release 1.0.0
+- Log to syslog instead of STDOUT/STDERR to `/var/log/upstart/openconnect`.
+- Disable `hasrestart` so that argument changes get picked up.
+- Removed some empty directories from the repo (shouldn't affect anyone).
+
 2014-03-10 Release 0.0.6
 - Added servercert param for SHA1 fingerprint of trusted server's SSL cert. Thanks to @AbleCoder
 - Fix a deprecation warning from rspec-puppet.
