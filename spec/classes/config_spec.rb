@@ -101,7 +101,7 @@ EOS
         })}
 
         it 'should reject an array' do
-          expect { should }.to raise_error(Puppet::Error, /is not a string/)
+          is_expected.to compile.and_raise_error(/is not a string/)
         end
       end
     end
@@ -113,7 +113,7 @@ EOS
         })}
 
         it 'should reject a string' do
-          expect { should }.to raise_error(Puppet::Error, /is not a boolean/)
+          is_expected.to compile.and_raise_error(/is not a boolean/)
         end
       end
     end
