@@ -25,7 +25,7 @@ describe 'openconnect' do
         describe 'without any params' do
           let(:params) {{ }}
           it 'should require mandatory params' do
-            expect { should }.to raise_error(Puppet::Error, /Must pass/)
+            is_expected.to compile.and_raise_error(/Must pass/)
           end
         end
       end
@@ -39,7 +39,7 @@ describe 'openconnect' do
         :operatingsystem => 'CentOS',
       }}
 
-      it { expect { should }.to raise_error(Puppet::Error, /CentOS not supported/) }
+      it { is_expected.to compile.and_raise_error(/CentOS not supported/) }
     end
   end
 end
