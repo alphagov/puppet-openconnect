@@ -32,10 +32,17 @@ class openconnect::config {
     ensure  => $cacerts_ensure,
     content => $cacerts,
   }
-
-  file { '/etc/init/openconnect.conf':
-    ensure  => present,
-    mode    => '0600',
-    content => template('openconnect/etc/init/openconnect.conf.erb'),
+  if $upstart {
+    file { '/etc/init/openconnect.conf':
+      ensure  => present,
+      mode    => '0600',
+      content => template('openconnect/etc/init/openconnect.conf.erb'),
+    }
+  }else{
+    file { '/etc/init.d/openconnect':
+      ensure  => present,
+      mode    => '0700',
+      content => template('openconnect/etc/init/openconnect.erb'),
+    }
   }
 }
