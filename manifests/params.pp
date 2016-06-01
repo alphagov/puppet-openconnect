@@ -8,6 +8,12 @@ class openconnect::params {
     'Debian': {
       $package_name = ['vpnc', 'openconnect']
       $service_name = 'openconnect'
+      $upstart      = true
+    }
+    'RedHat': {
+      $package_name = ['openconnect']
+      $service_name = 'openconnect'
+      $upstart      = false
     }
     default: {
       fail("${::operatingsystem} not supported")
