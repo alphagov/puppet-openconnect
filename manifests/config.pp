@@ -9,6 +9,7 @@ class openconnect::config {
   $dnsupdate  = $::openconnect::dnsupdate
   $cacerts    = $::openconnect::cacerts
   $servercert = $::openconnect::servercert
+  $upstart    = $::openconnect::upstart
 
   validate_string($url, $user, $pass, $cacerts, $servercert)
   validate_bool($dnsupdate)
