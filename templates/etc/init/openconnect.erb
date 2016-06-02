@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# openconnect starts Cisco VPN
+#
+# chkconfig: 345 92 08
+# description:  starts Cisco VPN
+#
+### BEGIN INIT INFO
+# Provides: iptables
+# Required-Start:
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Starts Cisco VPN
+# Description: Starts,stops Cisco VPN
+### END INIT INFO
+## 
+
+usage ()
+{
+        echo $"Usage: $0 {start|stop|status|restart|condrestart}" 1>&2
+        RETVAL=2
+}
+
+start ()
+{
+        <% if @dnsupdate == false -%>
+        env DNS_UPDATE=no
+        export DNS_UPDATE
+        <% end -%>
+
+        cat /etc/openconnect/network.passwd | openconnect \
+        <%= @url -%> \
+        --syslog \
+        --no-dtls \
+        -b \
+        --script /etc/vpnc/vpnc-script \
+        --pid /var/run/openconnect.pid \
+        <% unless @cacerts.empty? -%>
+        --CAfile /etc/openconnect/network.cacerts \
+        <% end -%>
+        <% if @authgroup -%>
+        --authgroup=<%= @authgroup %> \
+        <% end -%>
+        <% unless @servercert.empty? -%>
+        --servercert <%= @servercert -%> \
+        <% end -%>
+        --user <%= @user -%> \
+        --passwd-on-stdin 
+
+}
+
+stop ()
+{
+        if [ -f /var/run/openconnect.pid ];then
+                PID=$( cat /var/run/openconnect.pid )
+                kill $PID
+        else
+                killall openconnect
+        fi
+}
+
+status ()
+{
+        if [ -f /var/run/openconnect.pid ];then
+                PID=$( cat /var/run/openconnect.pid )
+                if [ -n "$( ps -ef |grep $PID )" ];then
+                        echo "Running with pid $PID"
+                        RETVAL=0
+                else
+                        RETVAL=3
+                fi
+        else
+
+                RETVAL=3
+        fi
+}          
+
+restart ()
+{
+        stop
+        start
+}
+
+case "$1" in
+        status) status
+                ;;
+        start) start 
+                ;;
+        stop) stop
+                ;;
+        restart) restart
+                ;;
+        *) usage 
+                ;;
+esac
+
+exit $RETVAL
