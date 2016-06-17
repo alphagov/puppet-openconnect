@@ -19,7 +19,7 @@ exec cat /etc/openconnect/network.passwd | openconnect \
 <% unless @cacerts.empty? -%>
   --CAfile /etc/openconnect/network.cacerts \
 <% end -%>
-<% if @authgroup %>
+<% if @authgroup -%>
   --authgroup=<%= @authgroup %>
 <% end -%>
 <% unless @servercert.empty? -%>
