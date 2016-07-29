@@ -31,7 +31,8 @@ class openconnect(
   $pass,
   $dnsupdate = true,
   $cacerts = '',
-  $servercert = ''
+  $servercert = '',
+  $authgroup = undef,
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->

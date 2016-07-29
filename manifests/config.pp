@@ -9,6 +9,7 @@ class openconnect::config {
   $dnsupdate  = $::openconnect::dnsupdate
   $cacerts    = $::openconnect::cacerts
   $servercert = $::openconnect::servercert
+  $upstart    = $::openconnect::upstart
 
   validate_string($url, $user, $pass, $cacerts, $servercert)
   validate_bool($dnsupdate)
@@ -32,10 +33,17 @@ class openconnect::config {
     ensure  => $cacerts_ensure,
     content => $cacerts,
   }
-
-  file { '/etc/init/openconnect.conf':
-    ensure  => present,
-    mode    => '0600',
-    content => template('openconnect/etc/init/openconnect.conf.erb'),
+  if $upstart {
+    file { '/etc/init/openconnect.conf':
+      ensure  => present,
+      mode    => '0600',
+      content => template('openconnect/etc/init/openconnect.conf.erb'),
+    }
+  } else {
+    file { '/etc/init.d/openconnect':
+      ensure  => present,
+      mode    => '0700',
+      content => template('openconnect/etc/init.d/openconnect.erb'),
+    }
   }
 }
