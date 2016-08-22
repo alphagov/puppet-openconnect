@@ -10,6 +10,7 @@ class openconnect::config {
   $cacerts    = $::openconnect::cacerts
   $servercert = $::openconnect::servercert
   $upstart    = $::openconnect::upstart
+  $proxy      = $::openconnect::proxy
 
   validate_string($url, $user, $pass, $cacerts, $servercert)
   validate_bool($dnsupdate)

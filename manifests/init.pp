@@ -25,6 +25,10 @@
 #   SHA1 fingerprint of trusted server's SSL certificate.
 #   Default: ''
 #
+# [*proxy*]
+#   The proxy to use to connect to the VPN
+#   Default: ''
+#
 class openconnect(
   $url,
   $user,
@@ -33,6 +37,7 @@ class openconnect(
   $cacerts = '',
   $servercert = '',
   $authgroup = undef,
+  $proxy = '',
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->
