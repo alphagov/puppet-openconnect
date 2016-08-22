@@ -25,5 +25,8 @@ exec cat /etc/openconnect/network.passwd | openconnect \
 <% unless @servercert.empty? -%>
   --servercert <%= @servercert -%> \
 <% end -%>
+<% unless @proxy.empty? -%>
+  --proxy="<%= @proxy %>" \
+<% end -%>
   --user <%= @user -%> \
   --passwd-on-stdin

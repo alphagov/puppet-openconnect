@@ -93,6 +93,18 @@ EOS
     end
   end
 
+  context 'proxy set' do
+    let(:params) { default_params.merge({
+      :proxy => 'http://localhost:8080',
+    })}
+
+    it 'should set the proxy option' do
+      should contain_file(upstart_file).with_content(
+        /^\s*--proxy="http:\/\/localhost:8080" \\$/
+      )
+    end
+  end
+
   context 'validate params' do
     %w{url user pass cacerts servercert}.each do |param|
       describe param do
