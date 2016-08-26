@@ -1,3 +1,10 @@
+2016-08-26 Release 1.1.0
+- Update the versions tested to use ruby 2.0.0 and 2.1.0
+- Add the `proxy` parameter. Code submitted by @joerayme
+- Add the `authgroup` parameter. Code submitted by @marianschmotzer
+- Add basic support for using the module on Centos. Code submitted by @marianschmotzer
+- Convert module from Modulefile to metadata.json
+
 2014-04-08 Release 1.0.0
 - Log to syslog instead of STDOUT/STDERR to `/var/log/upstart/openconnect`.
 - Disable `hasrestart` so that argument changes get picked up.
