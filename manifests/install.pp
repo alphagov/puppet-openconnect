@@ -1,4 +1,4 @@
-# == Class openconnect::intall
+# == Class openconnect::install
 #
 # Install OpenConnect and vpnc (required for vpnc-script).
 #
