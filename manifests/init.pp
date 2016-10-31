@@ -29,6 +29,10 @@
 #   The proxy to use to connect to the VPN
 #   Default: ''
 #
+# [*version*]
+#   Package version
+#   Default: 'present'
+#
 class openconnect(
   $url,
   $user,
@@ -38,6 +42,7 @@ class openconnect(
   $servercert = '',
   $authgroup = undef,
   $proxy = '',
+  $version = 'present',
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->
