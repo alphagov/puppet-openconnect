@@ -1,3 +1,7 @@
+2016-10-31 Release 1.2.0
+- Stop testing against Puppet 2.7
+- Add 'version' parameter
+
 2016-08-26 Release 1.1.0
 - Update the versions tested to use ruby 2.0.0 and 2.1.0
 - Add the `proxy` parameter. Code submitted by @joerayme
