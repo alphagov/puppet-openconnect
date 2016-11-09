@@ -6,14 +6,16 @@
 class openconnect::params {
   case $::osfamily {
     'Debian': {
-      $package_name = ['vpnc', 'openconnect']
-      $service_name = 'openconnect'
-      $upstart      = true
+      $package_name        = 'openconnect'
+      $additional_packages = ['vpnc']
+      $service_name        = 'openconnect'
+      $upstart             = true
     }
     'RedHat': {
-      $package_name = ['openconnect']
-      $service_name = 'openconnect'
-      $upstart      = false
+      $package_name        = 'openconnect'
+      $additional_packages = []
+      $service_name        = 'openconnect'
+      $upstart             = false
     }
     default: {
       fail("${::operatingsystem} not supported")

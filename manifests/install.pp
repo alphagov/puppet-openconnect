@@ -8,4 +8,10 @@ class openconnect::install {
   package { $openconnect::params::package_name:
     ensure => $::openconnect::version,
   }
+
+  if ! empty($openconnect::params::additional_packages) {
+    package { $openconnect::params::additional_packages:
+      ensure => present,
+    }
+  }
 }
