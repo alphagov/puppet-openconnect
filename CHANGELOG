@@ -1,3 +1,6 @@
+2016-11-09 Release 1.2.1
+- Fix bug vpnc package version on Debian
+
 2016-10-31 Release 1.2.0
 - Stop testing against Puppet 2.7
 - Add 'version' parameter

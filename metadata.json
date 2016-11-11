@@ -1,6 +1,6 @@
 {
   "name":         "gdsoperations-openconnect",
-  "version":      "1.2.0",
+  "version":      "1.2.1",
   "author":       "Government Digital Service",
   "license":      "MIT",
   "summary":      "Cisco OpenConnect VPN client",
