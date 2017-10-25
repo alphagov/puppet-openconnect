@@ -6,11 +6,17 @@
 class openconnect::service {
   include openconnect::params
 
+  if $openconnect::ensure == 'absent' {
+    $ensure = 'stopped'
+  } else {
+    $ensure = 'running'
+  }
+
   # Disable `hasrestart` because otherwise upstart won't pick up
   # option/argument changes to the init file.
   if $openconnect::params::upstart {
     service { $openconnect::params::service_name:
-      ensure     => running,
+      ensure     => $ensure,
       enable     => true,
       hasstatus  => true,
       hasrestart => false,
@@ -18,7 +24,7 @@ class openconnect::service {
     }
   } else {
     service { $openconnect::params::service_name:
-      ensure     => running,
+      ensure     => $ensure,
       enable     => true,
       hasstatus  => true,
       hasrestart => true,

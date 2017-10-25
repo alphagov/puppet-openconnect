@@ -43,6 +43,7 @@ class openconnect(
   $authgroup = undef,
   $proxy = '',
   $version = 'present',
+  $ensure = 'present',
 ) inherits openconnect::params {
 
   anchor { 'openconnect::begin': } ->
