@@ -5,13 +5,21 @@
 class openconnect::install {
   include openconnect::params
 
-  package { $openconnect::params::package_name:
-    ensure => $::openconnect::version,
+  $ensure = $openconnect::ensure
+
+  if $ensure == 'present' {
+    package { $openconnect::params::package_name:
+      ensure => $::openconnect::version,
+    }
+  } else {
+    package { $openconnect::params::package_name:
+      ensure => $ensure,
+    }
   }
 
   if ! empty($openconnect::params::additional_packages) {
     package { $openconnect::params::additional_packages:
-      ensure => present,
+      ensure => $ensure,
     }
   }
 }
