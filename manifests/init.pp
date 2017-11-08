@@ -46,11 +46,11 @@ class openconnect(
   $ensure = 'present',
 ) inherits openconnect::params {
 
-  anchor { 'openconnect::begin': } ->
-  class { 'openconnect::install': } ->
-  class { 'openconnect::config': }
-  class { 'openconnect::service': } ->
-  anchor { 'openconnect::end': }
+  anchor { 'openconnect::begin': }
+  -> class { 'openconnect::install': }
+  -> class { 'openconnect::config': }
+  class { 'openconnect::service': }
+  -> anchor { 'openconnect::end': }
 
   Anchor['openconnect::begin']  ~> Class['openconnect::service']
   Class['openconnect::install'] ~> Class['openconnect::service']
